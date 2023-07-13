@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<meta property='og:title' content='PromptSRC: Regularization framework for Prompt Learning'/>
+<meta property='og:image' content=''/>
+<meta property='og:description' content=''/>
+<meta property='og:url' content='https://muzairkhattak.github.io/PromptSRC/'/>
+<meta property='og:image:width' content='1200' />
+<meta property='og:image:height' content='663' />
+<!-- TYPE BELOW IS PROBABLY: 'website' or 'article' or look on https://ogp.me/#types -->
+<meta property="og:type" content='website'/>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VZKE74FPW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9VZKE74FPW');
+</script>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Self-regulating Prompts: Foundational Model Adaptation without Forgetting">
+  <meta name="keywords" content="Prompt Learning, Vision-Language models, CLIP, Generalization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Self-regulating Prompts: Foundational Model Adaptation without Forgetting</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/tab_gallery.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="juxtapose/css/juxtapose.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/magnifier.js"></script>
+  <link href="https://fonts.cdnfonts.com/css/menlo" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/image_card_fader.css">
+  <link rel="stylesheet" href="./static/css/image_card_slider.css">
+
+</head>
+
+<style>
+  @import url('https://fonts.cdnfonts.com/css/menlo');
+</style>
+
+
+<body>
+  <section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Self-regulating Prompts: Foundational Model Adaptation without Forgetting</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://muzairkhattak.github.io/">Muhammad Uzair Khattak</a><sup>*, 1</sup>,</span>
+            <span class="author-block">
+              <a href="https://talalwasim.github.io/">Syed Talal Wasim</a><sup>*, 1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=tM9xKA8AAAAJ&hl=en&oi=ao">Muzammal Naseer,</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://salman-h-khan.github.io/">Salman Khan</a><sup>1, 2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://faculty.ucmerced.edu/mhyang/"> Ming-Hsuan Yang</a><sup>4, 5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.es/citations?user=zvaeYnUAAAAJ&hl=en">Fahad Shahbaz Khan</a><sup>1, 3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Mohamed bin Zayed University of AI,</span>
+            <span class="author-block"><sup>2</sup>Australian National University,</span>
+            <span class="author-block"><sup>3</sup>Linkoping University,</span>
+            <span class="author-block"><sup>4</sup>University of California, Merced,</span>
+            <span class="author-block"><sup>5</sup>Google Research</span>
+          </div>
+
+          <div class="is-size-5 publication-venue">
+            *Joint first authors
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/muzairkhattak/PromptSRC"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+                            <span class="link-block">
+                <a href="https://drive.google.com/file/d/1d14q8hhAl6qGsiPYpNIVfShMCulVJSUa/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Presentation slides</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#bibtex"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-obp"></i>
+                  </span>
+                  <span>BibTex</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+<img src="./static/images/main_figure.png" >
+      <h2 class="subtitle has-text-centered">
+<p align="justify"> <b> <span style="color: blue;">Left</span></b>:  Existing prompt learning approaches for foundational Vision-Language models like CLIP rely on task-specific objectives that restrict prompt learning to learn a feature space suitable only for downstream tasks and consequently lose the generalized knowledge of CLIP (shown in <span style="color: purple;">purple</span></b>). Our self-regulating framework explicitly guides the training trajectory of prompts towards the closest point between two optimal solution manifolds (solid line) to learn task-specific representations while also retaining generalized CLIP knowledge (shown in <span style="color: green;">green</span>). <b><span style="color: blue;">Middle</span></b>: Averaged across 11 image recognition datasets, PromptSRC surpasses existing methods on the base-to-novel generalization setting. <b><span style="color: blue;">Right</span></b>: We evaluate our approach on four diverse image recognition benchmarks for CLIP and show consistent gains over previous state-of-the-art approaches. </p>
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>
+           Prompt learning has emerged as an efficient alternative for fine-tuning foundational models, such as CLIP, for various downstream tasks. Conventionally trained using the task-specific objective, i.e., cross-entropy loss, prompts tend to overfit downstream data distributions and find it challenging to capture task-agnostic general features from the frozen CLIP. This leads to the loss of the model's original generalization capability. To address this issue, our work introduces a self-regularization framework for prompting called PromptSRC (Prompting with Self-regulating Constraints). PromptSRC guides the prompts to optimize for both task-specific and task-agnostic general representations using a three-pronged approach by: (a) regulating {prompted} representations via mutual agreement maximization with the frozen model, (b) regulating with self-ensemble of prompts over the training trajectory to encode their complementary strengths, and (c) regulating with textual diversity to mitigate sample diversity imbalance with the visual branch. To the best of our knowledge, this is the first regularization framework for prompt learning that avoids overfitting by jointly attending to pre-trained model features, the training trajectory during prompting, and the textual diversity. PromptSRC explicitly steers the prompts to learn a representation space that maximizes performance on downstream tasks without compromising CLIP generalization. We perform experiments on 4 benchmarks where PromptSRC performs favorably well compared to the existing methods. Our code and pre-trained models are publicly available.
+          <br>
+        </p>
+      </div>
+
+            <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/promptsrc_teaser.mp4"
+                    type="video/mp4">
+          </video>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">A Regularization Framework for Prompt Learning</h2>
+        <div class="content has-text-justified">
+          <p>
+          <h5> <b> Key components of PromptSRC: </b></h5>
+           <ol>
+             <li> <b>Mutual agreement maximization: </b> PromptSRC explicitly guides the prompts to jointly acquire both task-specific knowledge and task-agnostic generalized knowledge by maximizing the mutual agreement between prompted and features of the frozen VL model.</li>
+  <li><b>Gaussian weighted prompt aggregation (GPA): </b> We propose a weighted self-ensembling strategy for prompts over the training trajectory that captures complementary features and enhances their generalization abilities.</li>
+  <li><b>Textual diversity:  </b>PromptSRC regulates prompts with textual diversity to mitigate sample diversity imbalance compared to the visual branch during training.</li>
+</ol>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+<section class="section">
+  
+    <!--/ Matting. -->
+    <div class="container is-max-desktop">
+    
+    <!-- Latent space editing applications -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">PromptSRC architecture</h2>
+
+
+        
+        <div class="content has-text-centered">
+            <img src="./static/images/framework.png">
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            <b>Our proposed PromptSRC framework for self-regulating prompt learning.</b> CLIP encoders are used to generate <b><span style="color: gray;">prompted</span></b> \(({\tilde{{f}}_p}, {\tilde{{g}}_p})\) and <b><span style="color: dodgerblue;">pre-trained</span></b> \(({\tilde{{f}}}, {\tilde{{g}}})\) features at the image and text sides. First, we introduce textual diversity and define textual augmentations to produce a diverse set of frozen VL textual features, which are averaged to represent the pre-trained VL text features \(\tilde{{g}}\). Next, we employ Mutual Agreement Maximization constraints \(\mathcal{L_{\textrm{SCL}}}\) to regulate the prompts, which ensure that the prompted features align well with the pre-trained VL representations at both the feature and logit levels. As CLIP is frozen, we use the same VL encoders to obtain both types of features. Further, our prompt self-ensembling combines the strengths of prompts learned at different epochs \(P_1, P_2 \cdots P_E\) during training via Gaussian weighted sampling. The ensembled <b><span style="color: magenta;">visual</span></b> and <b><span style="color: limegreen;">textual</span></b> prompts are then used for the final inference.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+        <h2 class="title is-3">PromptSRC results comparison</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We integrate our PromptSRC self-regularization framework with the Independent V-L prompt learning baseline which naivly trains vision and language prompts using supervised cross-entropy loss.
+          </p>
+        </div>
+                <h3 class="title is-4 has-text-justified">PromptSRC effectively mitigates prompt overfitting.</h3>
+              <div class="item item-sunflowers">
+                <img src="./static/images/prompt_training_trend.png" width="500" height="600"/>
+              </div>
+                <div class="content has-text-justified">
+          <p>
+Naively training prompts with standard supervised objectives (IVLP) improves supervised base classes performance but leads to poor generalization towards novel  classes as training schedule increases. Our PromptSRC method with explicit self-regulating constraints improves on <b><span style="color: forestgreen;">base classes</span></b> as well as shows improvements on <b><span style="color: darkorange ;">novel classes</span></b>.          </p>
+                  <p align="justify"> <b>Effect of our proposed regularization techniques.</b>  Results
+are averaged over 11 datasets. PromptSRC achieves improvements on novel classes while maintaining supervised base classes performance, leading to the average novel class and harmonic mean gains of +4.31% and +2.46% respectively.</p>
+<center>
+<table  border="0">
+<tbody>
+<tr>
+<td> <b>Method</b>   </td>
+<td><center> <b>Base Acc.</b>  </center>   </td>
+<td><center> <b>Novel Acc.</b>  </center>   </td>
+<td><center> <b>Harmonic mean (HM)</b>  </center>   </td>
+</tr>
+<tr>
+  <td>1: Independent V-L prompting</td>
+<td><center>80.24</center> </td>
+<td><center>73.43</center> </td>
+<td><center>76.68</center> </td>
+</tr>
+<tr>
+<td>2: + \(\mathcal{ L_{\textrm{SCL}}}\) </td>
+<td> <center>81.72 </center> </td>
+<td> <center>73.81 </center> </td>
+<td> <center>77.56 </center> </td>
+</tr>
+<tr>
+<td>3: + GPA </td>
+<td> <center>82.15 </center> </td>
+<td> <center>74.07 </center> </td>
+<td> <center>77.90 </center> </td>
+
+</tr>
+<tr>
+<td>  4:  + Textual diversity </td>
+<td> <b style="color:black;"> <center>84.26 </b></center>  </td>
+<td> <b style="color:black;"> <center>76.10 </b></center> </td>
+<td><b style="color:black;"> <center>79.97 </b></center> </td>
+
+</tr>
+</tbody>
+</table>
+</center>
+
+<br/>
+        </div>
+
+        <br>
+        <h3 class="title is-4 has-text-justified">PromptSRC in comparison with existing methods</h3>
+        <div class="content has-text-justified">
+          <p>
+Below table shows comparison of PromptSRC with state-of-the-art methods on base-to-novel generalization. PromptSRC demonstrates strong generalization performance over existing methods on 11 different recognition datasets.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+<center>
+<table  border="0">
+<tbody>
+<tr>
+<td> <b>Method</b>   </td>
+<td><center> <b>Base Acc.</b>  </center>   </td>
+<td><center> <b>Novel Acc.</b>  </center>   </td>
+<td><center> <b>Harmonic mean (HM)</b>  </center>   </td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2103.00020">CLIP [1]</a></td>
+<td><center>69.34</center> </td>
+<td><center>74.22</center> </td>
+<td><center>71.70</center> </td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2109.01134">CoOp [2]</a></td>
+<td> <center> 82.69</center> </td>
+<td> <center> 63.22  </center> </td>
+<td> <center>71.66  </center> </td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2203.05557">CoCoOp [3]</a></td>
+<td> <center>80.47  </center> </td>
+<td> <center>71.69 </center> </td>
+<td> <center>75.83 </center> </td>
+
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2205.03340">ProDA [4]</a></td>
+<td>  <center>81.56 </center>  </td>
+<td>  <center>72.30 </center> </td>
+<td> <center>76.65  </center> </td>
+
+</tr>
+      <tr>
+<td><a href="https://arxiv.org/abs/2210.03117">MaPLe [5]</a></td>
+<td> <center>82.28 </center>  </td>
+<td> <center>75.14 </center> </td>
+<td> <center>78.55 </center> </td>
+
+</tr>
+          <tr>
+<td><b style="color:black;"> PromptSRC (ours) </b></td>
+<td> <b style="color:black;"> <center>84.26 </b></center>  </td>
+<td> <b style="color:black;"> <center>76.10 </b></center> </td>
+<td><b style="color:black;"> <center>79.97 </b></center> </td>
+
+</tr>
+
+</tbody>
+</table>
+</center>
+
+<br/>
+        </div>
+
+        <h3 class="title is-4 has-text-justified">Conclusion</h3>
+        <div class="content has-text-justified">
+          <p>
+Prompt learning has emerged as an effective paradigm for adapting foundational VL models like CLIP. However, the prompts learned by the majority of existing methods inherently tend to overfit task-specific objectives and consequently compromise the inherent generalization ability of CLIP. Our work proposes a self-regulating prompt learning framework that addresses the prompt overfitting problem for better generalization. We show it is critical to guide the training trajectory of prompts by explicitly encouraging its mutual agreement with the frozen model through self-consistency constraints supplemented by incorporating textual diversity. We also propose a self-ensembling strategy for prompts that appropriately aggregates them via a Gaussian-weighted approach over the course of training. Extensive evaluations on multiple benchmarks show the benefit of our self-regulating approach for prompt learning.          </p>
+     <br><p>For more details about the proposed regularization framework and results comparison over additional benchmarks, please refer to our main paper. Thank you!</p>
+        </div>
+
+    <!--/ Matting. -->
+    <div class="container is-max-desktop">
+    
+      <!-- Latent space editing applications -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h1 class="title is-4 has-text-justified">References</h1>
+          <div class="content has-text-justified">
+            <p>
+
+<a id="first"> [1] Radford, Alec, et al. "Learning transferable visual models from natural language supervision." International conference on machine learning. PMLR, 2021. </a>
+<br>
+<a id="second"> [2] Zhou, Kaiyang, et al. "Learning to prompt for vision-language models." International Journal of Computer Vision 130.9 (2022): 2337-2348. </a>
+<br>
+<a id="third"> [3] Zhou, Kaiyang, et al. "Conditional prompt learning for vision-language models." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022. </a>
+<br>
+<a id="fourth"> [4] Lu, Yuning, et al. "Prompt distribution learning." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022. </a>
+  <br>
+              <a id="fifth"> [5] Khattak, Muhammad Uzair, et al. "Maple: Multi-modal prompt learning." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2023. </a>
+
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title"><a id="bibtex">BibTeX</a></h2>
+    <pre><code>@article{khattak2023PromptSRC,
+    title={Self-regulating Prompts: Foundational Model Adaptation without Forgetting},
+    author={khattak, Muhammad Uzair and Wasim, Syed Talal and Muzzamal, Naseer and Khan, Salman and Yang, Ming-Hsuan and Khan, Fahad Shahbaz},
+    journal={arXiv:},
+    year={2023}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+<!--          <p>-->
+<!--            This website is licensed under a <a rel="license"-->
+<!--                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative-->
+<!--            Commons Attribution-ShareAlike 4.0 International License</a>.-->
+<!--          </p>-->
+          <p>
+            Website adapted from the following <a href="https://mingukkang.github.io/GigaGAN/">source code</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="juxtapose/js/juxtapose.js"></script>
+
+<script>
+var slider;
+let origOptions = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+};
+
+const juxtaposeSelector = "#juxtapose-embed";
+const transientSelector = "#juxtapose-hidden";
+
+  inputImage.src = "./static/images/".concat(name, "_input.jpg")
+  outputImage.src = "./static/images/".concat(name, "_output.jpg")
+
+  let images = [inputImage, outputImage];
+  let options = slider.options;
+  options.callback = function(obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(juxtaposeSelector.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+      
+  };
+  
+  slider = new juxtapose.JXSlider(transientSelector, images, options);
+};
+
+
+
+(function() {
+    slider = new juxtapose.JXSlider(
+        juxtaposeSelector, origImages, origOptions);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+})();
+  // Get the image text
+  var imgText = document.getElementById("imgtext");
+  // Use the same src in the expanded image as the image being clicked on from the grid
+  // expandImg.src = imgs.src;
+  // Use the value of the alt attribute of the clickable image as text inside the expanded image
+  imgText.innerHTML = name;
+  // Show the container element (hidden with CSS)
+  // expandImg.parentElement.style.display = "block";
+
+$(".flip-card").click(function() {
+            console.log("fading in")
+            div_back = $(this).children().children()[1]
+            div_front = $(this).children().children()[0]
+            // console.log($(this).children("div.flip-card-back"))
+            console.log(div_back)
+            $(div_front).addClass("out");
+            $(div_front).removeClass("in");
+
+            $(div_back).addClass("in");
+            $(div_back).removeClass("out");
+
+});
+
+$(".flip-card").mouseleave(function() {
+            console.log("fading in")
+            div_back = $(this).children().children()[1]
+            div_front = $(this).children().children()[0]
+            // console.log($(this).children("div.flip-card-back"))
+            console.log(div_back)
+            $(div_front).addClass("in");
+            $(div_front).removeClass("out");
+
+            $(div_back).addClass("out");
+            $(div_back).removeClass("in");
+
+});
+
+</script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>    
+
+</body>
+</html>
