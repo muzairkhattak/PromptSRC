@@ -2,17 +2,17 @@
 
 
 
-> [**Self-regulating Prompts: Foundational Model Adaptation without Forgetting**]()<br>
+> [**Self-regulating Prompts: Foundational Model Adaptation without Forgetting**](https://arxiv.org/abs/2307.06948)<br>
 > [Muhammad Uzair Khattak*](https://muzairkhattak.github.io/), [Syed Talal Wasim*](https://talalwasim.github.io), [Muzammal Naseer](https://scholar.google.com/citations?user=tM9xKA8AAAAJ&hl=en&oi=ao), [Salman Khan](https://salman-h-khan.github.io/), [Ming-Hsuan Yang](http://faculty.ucmerced.edu/mhyang/), [Fahad Shahbaz Khan](https://scholar.google.es/citations?user=zvaeYnUAAAAJ&hl=en)
 
 *Joint first authors
 
-[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)]()
+[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2307.06948)
 [![Website](https://img.shields.io/badge/Project-Website-87CEEB)](https://muzairkhattak.github.io/PromptSRC/)
 [![slides](https://img.shields.io/badge/Presentation-Slides-B762C1)](https://drive.google.com/file/d/1d14q8hhAl6qGsiPYpNIVfShMCulVJSUa/view?usp=sharing)
 
 
-Official implementation of the paper "[Self-regulating Prompts: Foundational Model Adaptation without Forgetting](https://arxiv.org/abs/2210.03117)".
+Official implementation of the paper "[Self-regulating Prompts: Foundational Model Adaptation without Forgetting](https://arxiv.org/abs/2307.06948)".
 
 <hr />
 
@@ -79,7 +79,7 @@ We propose PromptSRC (Prompting with Self-regulating Constraints) which steers t
 
 | Method                    | Paper                                         |                             Configs                             |        Training Scripts         |
 |---------------------------|:----------------------------------------------|:---------------------------------------------------------------:|:-------------------------------:|
-| PromptSRC                 | [arXiv]()                                     |                    [link](configs/trainers/PromptSRC/)                    |    [link](scripts/promptsrc)    |
+| PromptSRC                 | [arXiv](https://arxiv.org/abs/2307.06948)                                     |                    [link](configs/trainers/PromptSRC/)                    |    [link](scripts/promptsrc)    |
 | Independent V-L Prompting | -                                             | [link](configs/trainers/IVLP/) | [link](scripts/independent-vlp) |
   | MaPLe                     | [CVPR 2023](https://arxiv.org/abs/2210.03117) |                  [link](configs/trainers/CoOp)                  |      [link](scripts/maple)      |
 | CoOp                      | [IJCV 2022](https://arxiv.org/abs/2109.01134) |                  [link](configs/trainers/CoOp)                  |      [link](scripts/coop)       |
@@ -111,7 +111,7 @@ PromptSRC effectively maximizes supervised task performance (base classes) witho
 | [CoCoOp](https://arxiv.org/abs/2203.05557) |   80.47   |   71.69    |   75.83   |   10   | 
 | [ProDA](https://arxiv.org/abs/2205.03340)  |   81.56   |   75.83    |   76.65   |  100   | 
 | [MaPLe](https://arxiv.org/abs/2210.03117)                           |   82.28   | 75.14  | 78.55 |   5    |
-| [PromptSRC (ours)]()                       | **84.26** | **76.10**  | **79.97** |   20   |  
+| [PromptSRC (ours)](https://arxiv.org/abs/2307.06948)                       | **84.26** | **76.10**  | **79.97** |   20   |  
 
 ## Installation 
 For installation and other package requirements, please follow the instructions detailed in [INSTALL.md](docs/INSTALL.md). 
@@ -143,7 +143,7 @@ If you find our work, this repository, or pretrained models useful, please consi
 @article{khattak2023PromptSRC,
     title={Self-regulating Prompts: Foundational Model Adaptation without Forgetting},
     author={khattak, Muhammad Uzair and Wasim, Syed Talal and Muzzamal, Naseer and Khan, Salman and Yang, Ming-Hsuan and Khan, Fahad Shahbaz},
-    journal={arXiv:},
+    journal={arXiv:2307.06948},
     year={2023}
 }
 ```
