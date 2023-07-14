@@ -9,6 +9,7 @@
 
 [![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2307.06948)
 [![Website](https://img.shields.io/badge/Project-Website-87CEEB)](https://muzairkhattak.github.io/PromptSRC/)
+[![video](https://img.shields.io/badge/video-teaser-orange)](https://www.youtube.com/watch?v=VVLwL57UBDg)
 [![slides](https://img.shields.io/badge/Presentation-Slides-B762C1)](https://drive.google.com/file/d/1d14q8hhAl6qGsiPYpNIVfShMCulVJSUa/view?usp=sharing)
 
 
@@ -16,6 +17,13 @@ Official implementation of the paper "[Self-regulating Prompts: Foundational Mod
 
 <hr />
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-imagenet)](https://paperswithcode.com/sota/prompt-engineering-on-imagenet?p=self-regulating-prompts-foundational-model)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-imagenet-v2)](https://paperswithcode.com/sota/prompt-engineering-on-imagenet-v2?p=self-regulating-prompts-foundational-model)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-sun397)](https://paperswithcode.com/sota/prompt-engineering-on-sun397?p=self-regulating-prompts-foundational-model)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-ucf101)](https://paperswithcode.com/sota/prompt-engineering-on-ucf101?p=self-regulating-prompts-foundational-model)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-fgvc-aircraft-1)](https://paperswithcode.com/sota/prompt-engineering-on-fgvc-aircraft-1?p=self-regulating-prompts-foundational-model)
+
+<hr />
 # :rocket: News
 * **(July 14, 2023)**
   * Our work is accepted to ICCV 2023! :tada:
