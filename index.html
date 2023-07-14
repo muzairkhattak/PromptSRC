@@ -23,7 +23,7 @@
 </script>
   <meta charset="utf-8">
   <meta name="description"
-        content="Self-regulating Prompts: Foundational Model Adaptation without Forgetting">
+        content="Self-regulating Prompts: Foundational Model Adaptation without Forgetting [ICCV-2023]">
   <meta name="keywords" content="Prompt Learning, Vision-Language models, CLIP, Generalization">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Self-regulating Prompts: Foundational Model Adaptation without Forgetting [ICCV 2023]</title>
@@ -64,7 +64,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-2 publication-title">Self-regulating Prompts: Foundational Model Adaptation without Forgetting</h1>
+          <h1 class="title is-2 publication-title">Self-regulating Prompts: Foundational Model Adaptation without Forgetting [ICCV-2023]</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://muzairkhattak.github.io/">Muhammad Uzair Khattak</a><sup>*, 1</sup>,</span>
@@ -157,15 +157,7 @@
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
-      <h2 class="title is-3">Abstract</h2>
-      <div class="content has-text-justified">
-        <p>
-           Prompt learning has emerged as an efficient alternative for fine-tuning foundational models, such as CLIP, for various downstream tasks. Conventionally trained using the task-specific objective, i.e., cross-entropy loss, prompts tend to overfit downstream data distributions and find it challenging to capture task-agnostic general features from the frozen CLIP. This leads to the loss of the model's original generalization capability. To address this issue, our work introduces a self-regularization framework for prompting called PromptSRC (Prompting with Self-regulating Constraints). PromptSRC guides the prompts to optimize for both task-specific and task-agnostic general representations using a three-pronged approach by: (a) regulating {prompted} representations via mutual agreement maximization with the frozen model, (b) regulating with self-ensemble of prompts over the training trajectory to encode their complementary strengths, and (c) regulating with textual diversity to mitigate sample diversity imbalance with the visual branch. To the best of our knowledge, this is the first regularization framework for prompt learning that avoids overfitting by jointly attending to pre-trained model features, the training trajectory during prompting, and the textual diversity. PromptSRC explicitly steers the prompts to learn a representation space that maximizes performance on downstream tasks without compromising CLIP generalization. We perform experiments on 4 benchmarks where PromptSRC performs favorably well compared to the existing methods. Our code and pre-trained models are publicly available.
-          <br>
-        </p>
-      </div>
-
-            <!-- Visual Effects. -->
+                 <!-- Visual Effects. -->
       <div class="column">
         <div class="content">
           <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
@@ -176,6 +168,14 @@
 
         </div>
       </div>
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>
+           Prompt learning has emerged as an efficient alternative for fine-tuning foundational models, such as CLIP, for various downstream tasks. Conventionally trained using the task-specific objective, i.e., cross-entropy loss, prompts tend to overfit downstream data distributions and find it challenging to capture task-agnostic general features from the frozen CLIP. This leads to the loss of the model's original generalization capability. To address this issue, our work introduces a self-regularization framework for prompting called PromptSRC (Prompting with Self-regulating Constraints). PromptSRC guides the prompts to optimize for both task-specific and task-agnostic general representations using a three-pronged approach by: (a) regulating {prompted} representations via mutual agreement maximization with the frozen model, (b) regulating with self-ensemble of prompts over the training trajectory to encode their complementary strengths, and (c) regulating with textual diversity to mitigate sample diversity imbalance with the visual branch. To the best of our knowledge, this is the first regularization framework for prompt learning that avoids overfitting by jointly attending to pre-trained model features, the training trajectory during prompting, and the textual diversity. PromptSRC explicitly steers the prompts to learn a representation space that maximizes performance on downstream tasks without compromising CLIP generalization. We perform experiments on 4 benchmarks where PromptSRC performs favorably well compared to the existing methods. Our code and pre-trained models are publicly available.
+          <br>
+        </p>
+      </div>
+
     </div>
   </div>
 
