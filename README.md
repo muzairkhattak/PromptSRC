@@ -1,4 +1,4 @@
-# Self-regulating Prompts: Foundational Model Adaptation without Forgetting
+# Self-regulating Prompts: Foundational Model Adaptation without Forgetting [ICCV 2023]
 
 
 
@@ -17,7 +17,9 @@ Official implementation of the paper "[Self-regulating Prompts: Foundational Mod
 <hr />
 
 # :rocket: News
-* **(July 12, 2023)** 
+* **(July 14, 2023)**
+  * Our work is accepted to ICCV 2023! :tada:
+* **(July 12, 2023)**
   * Pre-trained models and evaluation codes for reproducing PromptSRC official benchmark results are released.
   * Training codes for [PromptSRC](configs/trainers/PromptSRC) are released.
   * This repository also supports [MaPle (CVPR'23)](configs/trainers/MaPLe),
