@@ -24,6 +24,7 @@ Official implementation of the paper "[Self-regulating Prompts: Foundational Mod
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-fgvc-aircraft-1)](https://paperswithcode.com/sota/prompt-engineering-on-fgvc-aircraft-1?p=self-regulating-prompts-foundational-model)
 
 <hr />
+
 # :rocket: News
 * **(July 14, 2023)**
   * Our work is accepted to ICCV 2023! :tada:
