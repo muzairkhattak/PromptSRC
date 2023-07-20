@@ -85,6 +85,8 @@ The same above steps can be repeated for other individual datasets by providing 
 In this setting, PromptSRC is trained on all classes individual datasets with different few-shot splits (K = 1, 2, 4, 8, 16). The PromptSRC config for few-shot setting is available at: `configs/trainers/PromptSRC/vit_b16_c2_ep50_batch4_4+4ctx_few_shot.yaml`. 
 Follow the instructions below to reproduce PromptSRC few-shot setting results using our pre-trained models:
 
+* Download the zipped folder containing pre-trained few-shot weights for all datasets from this [link](https://mbzuaiac-my.sharepoint.com/:f:/g/personal/syed_wasim_mbzuai_ac_ae/EvXUaC943CNFtWk_Ubns2VwBGjUnhEHhWz56Mo6cqDgB4A?e=TSeoqF).
+
 Now use the evaluation script `scripts/promptsrc/reproduce_few_shot.sh` and run the commands below to calculate the results for imagenet dataset over 3 seeds:
 ```bash
 # reproduce_few_shot.sh calculates results for all 3 seeds for a given K
