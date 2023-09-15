@@ -134,7 +134,7 @@ bash scripts/promptsrc/few_shot.sh imagenet 2
 bash scripts/promptsrc/few_shot.sh imagenet 4 
 # train and test on given dataset for K=8 shot
 bash scripts/promptsrc/few_shot.sh imagenet 8 
-# train and test on given dataset for K=17 shot
+# train and test on given dataset for K=16 shot
 bash scripts/promptsrc/few_shot.sh imagenet 16
 ```
 
