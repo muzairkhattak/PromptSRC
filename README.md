@@ -151,11 +151,13 @@ Please refer to the [TRAIN.md](docs/TRAIN.md) for detailed instructions on train
 ## Citation
 If you find our work, this repository, or pretrained models useful, please consider giving a star :star: and citation.
 ```bibtex
-@article{khattak2023PromptSRC,
-    title={Self-regulating Prompts: Foundational Model Adaptation without Forgetting},
-    author={khattak, Muhammad Uzair and Wasim, Syed Talal and Muzzamal, Naseer and Khan, Salman and Yang, Ming-Hsuan and Khan, Fahad Shahbaz},
-    journal={arXiv:2307.06948},
-    year={2023}
+@InProceedings{Khattak_2023_ICCV,
+    author    = {Khattak, Muhammad Uzair and Wasim, Syed Talal and Naseer, Muzammal and Khan, Salman and Yang, Ming-Hsuan and Khan, Fahad Shahbaz},
+    title     = {Self-regulating Prompts: Foundational Model Adaptation without Forgetting},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {15190-15200}
 }
 ```
 
